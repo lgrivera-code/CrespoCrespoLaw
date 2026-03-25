@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crespo & Crespo Law</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1a2f45;
+    --gold: #b8962e;
+    --gold-light: #d4ad4a;
+    --gold-pale: #f5edd8;
+    --cream: #f8f5ef;
+    --white: #ffffff;
+    --gray-text: #5a6270;
+    --border: #e2ddd4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--navy);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: #06101a;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding: 0 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+    transition: box-shadow 0.3s;
+  }
+
+  .nav-logo {
+    display: flex; flex-direction: column; line-height: 1.1; text-decoration: none;
+  }
+  .nav-logo-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-weight: 600; color: #e2c77a;
+    letter-spacing: 0.02em;
+  }
+  .nav-logo-tag {
+    font-size: 0.65rem; font-weight: 400; color: rgba(255,255,255,0.5);
+    letter-spacing: 0.18em; text-transform: uppercase;
+  }
+
+  .nav-right {
+    display: flex; align-items: center; gap: 2rem;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 400; color: rgba(255,255,255,0.75);
+    text-decoration: none; letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #e2c77a; }
+
+  .lang-toggle {
+    display: flex; border: 1px solid rgba(201,168,76,0.4); border-radius: 4px; overflow: hidden;
+  }
+  .lang-btn {
+    padding: 4px 12px; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em;
+    border: none; cursor: pointer; background: transparent; color: rgba(255,255,255,0.45);
+    transition: background 0.2s, color 0.2s;
+  }
+  .lang-btn.active { background: var(--gold); color: #06101a; }
+
+  .nav-cta {
+    background: var(--gold); color: var(--white); border: none; cursor: pointer;
+    padding: 9px 22px; border-radius: 4px; font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.2s;
+    text-decoration: none; display: inline-block;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    padding: 100px 5vw 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-text {
+    position: absolute; right: -2vw; top: 50%; transform: translateY(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22vw; font-weight: 600; color: rgba(255,255,255,0.03);
+    line-height: 1; pointer-events: none; user-select: none;
+    white-space: nowrap;
+  }
+
+  .hero-line {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 4px; background: var(--gold);
+  }
+
+  .hero-content { max-width: 720px; position: relative; }
+
+  .hero-eyebrow {
+    font-size: 0.78rem; font-weight: 400; color: var(--gold);
+    letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 12px;
+    animation: fadeUp 0.7s ease both 0.1s;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: inline-block; width: 32px; height: 1px; background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+    font-weight: 500; line-height: 1.08;
+    color: var(--white); margin-bottom: 1.5rem;
+    animation: fadeUp 0.7s ease both 0.25s;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+
+  .hero-desc {
+    font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.65);
+    max-width: 480px; margin-bottom: 2.5rem; line-height: 1.8;
+    animation: fadeUp 0.7s ease both 0.4s;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.7s ease both 0.55s;
+  }
+
+  .btn-primary {
+    background: var(--gold); color: var(--white); text-decoration: none;
+    padding: 14px 32px; border-radius: 4px; font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase; display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8);
+    text-decoration: none; padding: 14px 32px; border-radius: 4px;
+    font-size: 0.85rem; font-weight: 400; letter-spacing: 0.06em;
+    display: inline-block; transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  .hero-stats {
+    margin-top: 4rem; display: flex; gap: 3rem;
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem;
+    animation: fadeUp 0.7s ease both 0.7s;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 600; color: var(--gold-light); line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem; color: rgba(255,255,255,0.45);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px;
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 5vw; }
+
+  .section-label {
+    font-size: 0.72rem; font-weight: 500; color: var(--gold);
+    letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::before {
+    content: ''; display: inline-block; width: 24px; height: 1px; background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 500; line-height: 1.15; color: var(--navy); margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem; font-weight: 300; color: var(--gray-text);
+    max-width: 520px; line-height: 1.8;
+  }
+
+  /* SERVICES */
+  .services-section { background: var(--cream); }
+
+  .services-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 4rem; flex-wrap: wrap; gap: 1.5rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .service-card {
+    background: var(--white); padding: 2.5rem;
+    cursor: pointer; transition: background 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .service-card:hover { background: var(--gold-pale); }
+  .service-card:hover .service-arrow { opacity: 1; transform: translate(0, 0); }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.8rem; color: var(--gold);
+    letter-spacing: 0.12em; margin-bottom: 1.2rem;
+  }
+
+  .service-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 600; color: var(--navy);
+    margin-bottom: 0.3rem; line-height: 1.2;
+  }
+
+  .service-title-en {
+    font-size: 0.78rem; font-weight: 400; color: var(--gold);
+    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem;
+  }
+
+  .service-desc {
+    font-size: 0.9rem; color: var(--gray-text); line-height: 1.75;
+  }
+
+  .service-tags {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1.2rem;
+  }
+  .tag {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em;
+    padding: 4px 10px; border: 1px solid var(--border);
+    color: var(--navy); border-radius: 2px; text-transform: uppercase;
+  }
+
+  .service-arrow {
+    position: absolute; bottom: 2rem; right: 2rem;
+    color: var(--gold); font-size: 1.2rem;
+    opacity: 0; transform: translate(-4px, 4px);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  /* APPROACH */
+  .approach-section { background: var(--white); }
+
+  .approach-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5vw; align-items: center; margin-top: 4rem;
+  }
+
+  .approach-visual {
+    background: var(--navy); padding: 3rem; border-radius: 2px;
+    position: relative; overflow: hidden;
+  }
+
+  .approach-visual-bg {
+    position: absolute; right: -20px; bottom: -20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 140px; font-weight: 600;
+    color: rgba(255,255,255,0.04); line-height: 1; user-select: none;
+  }
+
+  .approach-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 400; font-style: italic;
+    color: var(--white); line-height: 1.5; position: relative; margin-bottom: 1.5rem;
+  }
+
+  .approach-quote::before {
+    content: '\201C'; font-size: 4rem; color: var(--gold);
+    line-height: 1; display: block; margin-bottom: -1rem;
+    font-style: normal;
+  }
+
+  .approach-author {
+    font-size: 0.8rem; color: rgba(255,255,255,0.45);
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+
+  .approach-points { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .approach-point { display: flex; gap: 1.2rem; align-items: flex-start; }
+
+  .point-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 400; color: var(--gold);
+    line-height: 1; flex-shrink: 0; width: 28px;
+  }
+
+  .point-text h4 {
+    font-size: 1rem; font-weight: 500; color: var(--navy); margin-bottom: 0.3rem;
+  }
+
+  .point-text p {
+    font-size: 0.88rem; font-weight: 300; color: var(--gray-text); line-height: 1.7;
+  }
+
+  /* CONTACT */
+  .contact-section { background: var(--navy); }
+  .contact-section .section-title { color: var(--white); }
+  .contact-section .section-subtitle { color: rgba(255,255,255,0.5); }
+
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 6vw; margin-top: 4rem; align-items: start;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 2rem; }
+
+  .contact-item h4 {
+    font-size: 0.72rem; font-weight: 500; color: var(--gold);
+    letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.4rem;
+  }
+
+  .contact-item p, .contact-item a {
+    font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.7);
+    text-decoration: none; display: block; line-height: 1.6;
+  }
+
+  .contact-item a:hover { color: var(--gold-light); }
+
+  .contact-form { display: grid; gap: 1rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .form-group label {
+    font-size: 0.72rem; font-weight: 500; color: rgba(255,255,255,0.5);
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--white);
+    padding: 12px 14px; border-radius: 4px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 300;
+    transition: border-color 0.2s, background 0.2s;
+    width: 100%;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none; border-color: var(--gold); background: rgba(255,255,255,0.09);
+  }
+
+  .form-group select {
+    cursor: pointer; -webkit-appearance: none; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23b8962e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
+  }
+
+  .form-group select option { background: var(--navy-mid); color: var(--white); }
+
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+
+  .form-submit {
+    background: var(--gold); color: var(--white); border: none;
+    padding: 14px 32px; border-radius: 4px; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    transition: background 0.2s; justify-self: start; margin-top: 0.5rem;
+  }
+
+  .form-submit:hover { background: var(--gold-light); }
+
+  .form-disclaimer {
+    font-size: 0.75rem; color: rgba(255,255,255,0.3); line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #080e18;
+    padding: 3rem 5vw;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600; color: var(--white);
+  }
+
+  .footer-copy {
+    font-size: 0.78rem; color: rgba(255,255,255,0.3); line-height: 1.6;
+  }
+
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a {
+    font-size: 0.78rem; color: rgba(255,255,255,0.35); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* LANGUAGE SYSTEM */
+  [data-lang="en"] { display: none; }
+  body.lang-en [data-lang="es"] { display: none; }
+  body.lang-en [data-lang="en"] { display: block; }
+  body.lang-en span[data-lang="en"],
+  body.lang-en a[data-lang="en"] { display: inline; }
+  body.lang-en span[data-lang="es"],
+  body.lang-en a[data-lang="es"] { display: none; }
+  body.lang-en li[data-lang="en"] { display: list-item; }
+  body.lang-en li[data-lang="es"] { display: none; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .approach-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body class="lang-es">
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#inicio" class="nav-logo">
+    <span class="nav-logo-name">Crespo &amp; Crespo</span>
+    <span class="nav-logo-tag">Law Firm &middot; Puerto Rico &middot; Florida</span>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#servicios" data-lang="es">Servicios</a><a href="#servicios" data-lang="en">Services</a></li>
+      <li><a href="#nosotros" data-lang="es">Nosotros</a><a href="#nosotros" data-lang="en">About</a></li>
+      <li><a href="#contacto" data-lang="es">Contacto</a><a href="#contacto" data-lang="en">Contact</a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="#contacto" class="nav-cta">
+      <span data-lang="es">Consulta Gratis</span>
+      <span data-lang="en">Free Consult</span>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-line"></div>
+  <div class="hero-bg-text">LEX</div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">
+      <span data-lang="es">Firma de Abogados &middot; Puerto Rico &middot; Florida</span>
+      <span data-lang="en">Law Firm &middot; Puerto Rico &middot; Florida</span>
+    </p>
+    <h1>
+      <span data-lang="es">Soluciones legales <em>reales</em><br>para personas reales.</span>
+      <span data-lang="en">Real legal solutions<br><em>for real</em> people.</span>
+    </h1>
+    <p class="hero-desc">
+      <span data-lang="es">Desde quiebras hasta planificaci&oacute;n sucesoral, te acompa&ntilde;amos en cada paso con claridad, estrategia y compromiso.</span>
+      <span data-lang="en">From bankruptcy to estate planning, we guide you through every step with clarity, strategy, and commitment.</span>
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">
+        <span data-lang="es">Agenda tu consulta</span>
+        <span data-lang="en">Schedule a consult</span>
+      </a>
+      <a href="#servicios" class="btn-outline">
+        <span data-lang="es">Ver servicios</span>
+        <span data-lang="en">Our services</span>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">14+</div>
+        <div class="stat-label" data-lang="es">A&ntilde;os de experiencia</div>
+        <div class="stat-label" data-lang="en">Years of experience</div>
+      </div>
+      <div>
+        <div class="stat-num">6</div>
+        <div class="stat-label" data-lang="es">&Aacute;reas de pr&aacute;ctica</div>
+        <div class="stat-label" data-lang="en">Practice areas</div>
+      </div>
+      <div>
+        <div class="stat-num">PR + FL</div>
+        <div class="stat-label">Puerto Rico &amp; Florida</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="servicios">
+  <div class="services-header">
+    <div>
+      <p class="section-label">
+        <span data-lang="es">&Aacute;reas de Pr&aacute;ctica</span>
+        <span data-lang="en">Practice Areas</span>
+      </p>
+      <h2 class="section-title">
+        <span data-lang="es">Lo que hacemos,<br>lo hacemos bien.</span>
+        <span data-lang="en">What we do,<br>we do well.</span>
+      </h2>
+    </div>
+    <p class="section-subtitle">
+      <span data-lang="es">Cada caso es diferente. Te escuchamos, entendemos tu situaci&oacute;n y dise&ntilde;amos la mejor estrategia para ti.</span>
+      <span data-lang="en">Every case is different. We listen, understand your situation, and craft the best strategy for you.</span>
+    </p>
+  </div>
+
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-title" data-lang="es">Quiebras</div>
+      <div class="service-title" data-lang="en">Bankruptcy</div>
+      <div class="service-title-en" data-lang="es">Bankruptcy</div>
+      <div class="service-title-en" data-lang="en">Quiebras</div>
+      <p class="service-desc">
+        <span data-lang="es">&iquest;Las deudas te tienen paralizado? El proceso de quiebra es una herramienta, no un fracaso. Ya sea liquidar con el Cap&iacute;tulo 7, reorganizarte con el 13, o reestructurar tu negocio con el Sub Cap&iacute;tulo V.</span>
+        <span data-lang="en">Drowning in debt? Bankruptcy is a tool, not a defeat. Whether wiping the slate clean with Chapter 7, reorganizing with Chapter 13, or restructuring your business under Sub Chapter V.</span>
+      </p>
+      <div class="service-tags">
+        <span class="tag">Cap&iacute;tulo 7</span>
+        <span class="tag">Cap&iacute;tulo 13</span>
+        <span class="tag">Sub Cap. V &middot; PyMEs</span>
+      </div>
+      <span class="service-arrow">&#x2192;</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-title" data-lang="es">Planificaci&oacute;n Sucesoral</div>
+      <div class="service-title" data-lang="en">Estate Planning</div>
+      <div class="service-title-en" data-lang="es">Estate Planning &amp; Asset Protection</div>
+      <div class="service-title-en" data-lang="en">Planificaci&oacute;n Sucesoral</div>
+      <p class="service-desc">
+        <span data-lang="es">Dise&ntilde;amos el plan para que tus herederos no tengan que bregar con tribunales. Fideicomisos, poderes duraderos, living wills y protecci&oacute;n de activos para los que tienen mucho que proteger.</span>
+        <span data-lang="en">We design the plan so your heirs don't have to deal with courts. Trusts, durable powers of attorney, living wills, and asset protection for those who have much to protect.</span>
+      </p>
+      <div class="service-tags">
+        <span class="tag">Fideicomiso</span>
+        <span class="tag">Poder Duradero</span>
+        <span class="tag">Living Will</span>
+        <span class="tag">Protecci&oacute;n de Activos</span>
+      </div>
+      <span class="service-arrow">&#x2192;</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-title" data-lang="es">Sucesiones</div>
+      <div class="service-title" data-lang="en">Probate</div>
+      <div class="service-title-en" data-lang="es">Probate &amp; Inheritance</div>
+      <div class="service-title-en" data-lang="en">Sucesiones</div>
+      <p class="service-desc">
+        <span data-lang="es">&iquest;Eres heredero y no sabes por d&oacute;nde empezar? Con o sin testamento, te guiamos por el proceso de sucesi&oacute;n de la manera m&aacute;s &aacute;gil y econ&oacute;mica posible.</span>
+        <span data-lang="en">Are you an heir and don't know where to start? With or without a will, we guide you through the probate process as efficiently and cost-effectively as possible.</span>
+      </p>
+      <div class="service-tags">
+        <span class="tag">Con testamento</span>
+        <span class="tag">Sin testamento</span>
+        <span class="tag">Partici&oacute;n de herencia</span>
+      </div>
+      <span class="service-arrow">&#x2192;</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-title" data-lang="es">Cobro de Dinero</div>
+      <div class="service-title" data-lang="en">Debt Collection</div>
+      <div class="service-title-en" data-lang="es">Collections Litigation</div>
+      <div class="service-title-en" data-lang="en">Cobro de Dinero</div>
+      <p class="service-desc">
+        <span data-lang="es">Proveíste servicios o mercancía y no te pagaron. Nosotros demandamos. Simple como eso. Te ayudamos a recuperar lo que es tuyo.</span>
+        <span data-lang="en">You provided services or goods and didn't get paid. We file suit. Simple as that. We help you recover what's rightfully yours.</span>
+      </p>
+      <div class="service-tags">
+        <span class="tag">Demanda civil</span>
+        <span class="tag">Cobro comercial</span>
+      </div>
+      <span class="service-arrow">&#x2192;</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-title" data-lang="es">Naturalizaci&oacute;n de Sentencia</div>
+      <div class="service-title" data-lang="en">Judgment Naturalization</div>
+      <div class="service-title-en" data-lang="es">Cross-Jurisdiction Enforcement</div>
+      <div class="service-title-en" data-lang="en">Naturalizaci&oacute;n de Sentencia</div>
+      <p class="service-desc">
+        <span data-lang="es">Tienes sentencia en Puerto Rico pero el deudor tiene activos en Florida &mdash; o al rev&eacute;s. Llevamos tu sentencia a donde est&aacute;n los activos y la hacemos valer.</span>
+        <span data-lang="en">You have a judgment in Puerto Rico but the debtor has assets in Florida &mdash; or vice versa. We take your judgment where the assets are and enforce it.</span>
+      </p>
+      <div class="service-tags">
+        <span class="tag">PR &#x2194; FL</span>
+        <span class="tag">Ejecuci&oacute;n de sentencia</span>
+      </div>
+      <span class="service-arrow">&#x2192;</span>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-title" data-lang="es">Planificaci&oacute;n Contributiva</div>
+      <div class="service-title" data-lang="en">Tax Planning</div>
+      <div class="service-title-en" data-lang="es">Tax Strategy</div>
+      <div class="service-title-en" data-lang="en">Planificaci&oacute;n Contributiva</div>
+      <p class="service-desc">
+        <span data-lang="es">&iquest;Pagas demasiado en impuestos? Te dise&ntilde;amos un plan legal para minimizar tu carga contributiva. Conoce tus opciones antes de que sea tarde.</span>
+        <span data-lang="en">Paying too much in taxes? We design a legal plan to minimize your tax burden. Know your options before it's too late.</span>
+      </p>
+      <div class="service-tags">
+        <span class="tag">Hacienda</span>
+        <span class="tag">IRS</span>
+        <span class="tag">CRIM</span>
+        <span class="tag">ASUME</span>
+      </div>
+      <span class="service-arrow">&#x2192;</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT / APPROACH -->
+<section class="approach-section" id="nosotros">
+  <p class="section-label">
+    <span data-lang="es">Nuestro Enfoque</span>
+    <span data-lang="en">Our Approach</span>
+  </p>
+  <h2 class="section-title">
+    <span data-lang="es">Derecho con lenguaje claro.</span>
+    <span data-lang="en">Law in plain language.</span>
+  </h2>
+  <div class="approach-grid">
+    <div class="approach-visual">
+      <div class="approach-visual-bg">CC</div>
+      <p class="approach-quote">
+        <span data-lang="es">El mejor abogado no es el que habla m&aacute;s dif&iacute;cil, sino el que te explica bien y resuelve.</span>
+        <span data-lang="en">The best lawyer isn't the one who speaks in the most jargon &mdash; it's the one who explains clearly and delivers results.</span>
+      </p>
+      <p class="approach-author">Crespo &amp; Crespo &middot; Law Firm</p>
+    </div>
+    <div class="approach-points">
+      <div class="approach-point">
+        <div class="point-num">1</div>
+        <div class="point-text">
+          <h4 data-lang="es">Te escuchamos de verdad</h4>
+          <h4 data-lang="en">We truly listen</h4>
+          <p data-lang="es">Antes de cualquier estrategia, entendemos tu situaci&oacute;n completa &mdash; las deudas, los activos, la familia, el negocio.</p>
+          <p data-lang="en">Before any strategy, we understand your full picture &mdash; the debts, the assets, the family, the business.</p>
+        </div>
+      </div>
+      <div class="approach-point">
+        <div class="point-num">2</div>
+        <div class="point-text">
+          <h4 data-lang="es">Sin jerigonza legal</h4>
+          <h4 data-lang="en">No legalese</h4>
+          <p data-lang="es">Te explicamos todo en espa&ntilde;ol claro (o en ingl&eacute;s si prefieres). Sabes exactamente qu&eacute; pasa, cu&aacute;ndo y por qu&eacute;.</p>
+          <p data-lang="en">We explain everything in plain language. You know exactly what's happening, when, and why.</p>
+        </div>
+      </div>
+      <div class="approach-point">
+        <div class="point-num">3</div>
+        <div class="point-text">
+          <h4 data-lang="es">Estrategia, no solo tr&aacute;mites</h4>
+          <h4 data-lang="en">Strategy, not just paperwork</h4>
+          <p data-lang="es">No somos un taller de formularios. Dise&ntilde;amos la soluci&oacute;n legal m&aacute;s inteligente para tu situaci&oacute;n espec&iacute;fica.</p>
+          <p data-lang="en">We're not a form-filling shop. We design the smartest legal solution for your specific situation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contacto">
+  <p class="section-label" style="color: var(--gold);">
+    <span data-lang="es">Consulta Gratuita</span>
+    <span data-lang="en">Free Consultation</span>
+  </p>
+  <h2 class="section-title">
+    <span data-lang="es">Hablemos de tu caso.</span>
+    <span data-lang="en">Let's talk about your case.</span>
+  </h2>
+  <p class="section-subtitle">
+    <span data-lang="es">Sin compromiso. Sin letra peque&ntilde;a. Solo una conversaci&oacute;n honesta sobre c&oacute;mo podemos ayudarte.</span>
+    <span data-lang="en">No commitment. No fine print. Just an honest conversation about how we can help.</span>
+  </p>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <h4 data-lang="es">Tel&eacute;fono</h4>
+        <h4 data-lang="en">Phone</h4>
+        <a href="tel:+17872222222">(787) 222-2222</a>
+      </div>
+      <div class="contact-item">
+        <h4>Email</h4>
+        <a href="/cdn-cgi/l/email-protection#6900070f06290a1b0c1a19060a1b0c1a190605081e470a0604"><span class="__cf_email__" data-cfemail="31585f575e7152435442415e52435442415e5d50461f525e5c">[email&#160;protected]</span></a>
+      </div>
+      <div class="contact-item">
+        <h4 data-lang="es">Ubicaci&oacute;n</h4>
+        <h4 data-lang="en">Location</h4>
+        <p>Puerto Rico</p>
+      </div>
+      <div class="contact-item">
+        <h4 data-lang="es">Horario</h4>
+        <h4 data-lang="en">Hours</h4>
+        <p data-lang="es">Lun &ndash; Vie &middot; 8:30am &ndash; 5:30pm</p>
+        <p data-lang="en">Mon &ndash; Fri &middot; 8:30am &ndash; 5:30pm</p>
+      </div>
+    </div>
+
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label data-lang="es">Nombre</label>
+          <label data-lang="en">Name</label>
+          <input type="text" id="f-nombre" placeholder="Tu nombre completo">
+        </div>
+        <div class="form-group">
+          <label data-lang="es">Tel&eacute;fono</label>
+          <label data-lang="en">Phone</label>
+          <input type="tel" placeholder="(787) 000-0000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="tu@email.com">
+      </div>
+      <div class="form-group">
+        <label data-lang="es">&Aacute;rea de inter&eacute;s</label>
+        <label data-lang="en">Area of interest</label>
+        <select id="f-servicio">
+          <option value="">— Selecciona un servicio / Select a service —</option>
+          <option>Quiebra &middot; Cap&iacute;tulo 7 / Bankruptcy Chapter 7</option>
+          <option>Quiebra &middot; Cap&iacute;tulo 13 / Bankruptcy Chapter 13</option>
+          <option>Quiebra &middot; Sub Cap. V (PyME / SMB)</option>
+          <option>Planificaci&oacute;n Sucesoral / Estate Planning</option>
+          <option>Protecci&oacute;n de Activos / Asset Protection</option>
+          <option>Sucesi&oacute;n / Probate</option>
+          <option>Cobro de Dinero / Debt Collection</option>
+          <option>Naturalizaci&oacute;n de Sentencia / Judgment Naturalization</option>
+          <option>Planificaci&oacute;n Contributiva / Tax Planning</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-lang="es">Cu&eacute;ntanos brevemente</label>
+        <label data-lang="en">Brief description</label>
+        <textarea id="f-msg" placeholder="Describe tu situaci&oacute;n en unas l&iacute;neas..."></textarea>
+      </div>
+      <button type="submit" class="form-submit" id="submit-btn">
+        <span data-lang="es">Enviar consulta</span>
+        <span data-lang="en">Send inquiry</span>
+      </button>
+      <p class="form-disclaimer">
+        <span data-lang="es">La informaci&oacute;n que compartes es confidencial y est&aacute; protegida por el privilegio abogado-cliente.</span>
+        <span data-lang="en">The information you share is confidential and protected by attorney-client privilege.</span>
+      </p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Crespo &amp; Crespo</div>
+  </div>
+  <p class="footer-copy">
+    &copy; 2025 Crespo &amp; Crespo Law. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span><br>
+    <span data-lang="es">Puerto Rico &middot; Licenciados por el Tribunal Supremo de Puerto Rico</span>
+    <span data-lang="en">Puerto Rico &middot; Licensed by the Puerto Rico Supreme Court</span>
+  </p>
+  <nav class="footer-links">
+    <a href="#servicios" data-lang="es">Servicios</a>
+    <a href="#servicios" data-lang="en">Services</a>
+    <a href="#nosotros" data-lang="es">Nosotros</a>
+    <a href="#nosotros" data-lang="en">About</a>
+    <a href="#contacto" data-lang="es">Contacto</a>
+    <a href="#contacto" data-lang="en">Contact</a>
+  </nav>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function setLang(lang) {
+  document.body.classList.toggle('lang-en', lang === 'en');
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.documentElement.lang = lang;
+  var nb = document.getElementById('f-nombre');
+  if (nb) nb.placeholder = lang === 'en' ? 'Your full name' : 'Tu nombre completo';
+  var mb = document.getElementById('f-msg');
+  if (mb) mb.placeholder = lang === 'en' ? 'Briefly describe your situation...' : 'Describe tu situaci\u00f3n en unas l\u00edneas...';
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+  var btn = document.getElementById('submit-btn');
+  var isEs = !document.body.classList.contains('lang-en');
+  btn.textContent = isEs ? '\u2713 Mensaje enviado' : '\u2713 Message sent';
+  btn.style.background = '#2a7a4e';
+  btn.disabled = true;
+  setTimeout(function() {
+    btn.innerHTML = isEs
+      ? '<span data-lang="es">Enviar consulta</span>'
+      : '<span data-lang="en">Send inquiry</span>';
+    btn.style.background = '';
