@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naturalización de Sentencia | Crespo &amp; Crespo Law</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#0d1b2a;--gold:#c9a84c;--gold-light:#e2c77a;--gold-pale:#f5edd8;
+  --cream:#faf8f4;--white:#ffffff;--text-mid:#4a5568;--border:rgba(13,27,42,0.1);
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',sans-serif;
+  --transition:0.3s cubic-bezier(0.4,0,0.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--navy);font-size:16px;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#06101a;backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,168,76,0.3);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav-logo{display:flex;flex-direction:column;line-height:1.1;text-decoration:none}
+.nav-logo-name{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:#e2c77a;letter-spacing:0.02em}
+.nav-logo-tag{font-size:0.65rem;font-weight:400;color:rgba(255,255,255,0.5);letter-spacing:0.18em;text-transform:uppercase}
+.nav-right{display:flex;align-items:center;gap:2rem}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:0.85rem;font-weight:400;color:rgba(255,255,255,0.75);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s}
+.nav-links a:hover{color:#e2c77a}
+.lang-toggle{display:flex;border:1px solid rgba(201,168,76,0.4);border-radius:4px;overflow:hidden}
+.lang-btn{padding:4px 12px;font-size:0.78rem;font-weight:500;letter-spacing:0.06em;border:none;cursor:pointer;background:transparent;color:rgba(255,255,255,0.45);transition:background 0.2s,color 0.2s;font-family:var(--sans)}
+.lang-btn.active{background:var(--gold);color:#06101a}
+.nav-cta{background:var(--gold);color:var(--navy);border:none;cursor:pointer;padding:9px 22px;border-radius:4px;font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;transition:background 0.2s;text-decoration:none;display:inline-block}
+.nav-cta:hover{background:var(--gold-light)}
+
+.page-hero{background:var(--navy);padding:130px 8vw 80px;position:relative;overflow:hidden}
+.page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.3),transparent)}
+.hero-bg{position:absolute;right:5vw;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:18vw;font-weight:600;color:rgba(255,255,255,0.025);line-height:1;pointer-events:none;user-select:none}
+.back-link{display:inline-flex;align-items:center;gap:8px;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.4);text-decoration:none;margin-bottom:2rem;transition:color 0.2s}
+.back-link:hover{color:var(--gold)}
+.back-link svg{width:14px;height:14px}
+.hero-label{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem}
+.hero-title{font-family:var(--serif);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:1rem}
+.hero-title em{font-style:italic;color:var(--gold-light)}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.5);font-weight:300;max-width:580px;margin-bottom:2rem}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px}
+.hero-tag{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 12px;border:1px solid rgba(201,168,76,0.3);color:rgba(255,255,255,0.5);border-radius:2px}
+
+.content-section{padding:80px 8vw;max-width:1100px;margin:0 auto}
+.content-grid{display:grid;grid-template-columns:1fr 2fr;gap:5rem;align-items:start}
+.sidebar-label{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem}
+.sidebar-title{font-family:var(--serif);font-size:1.8rem;font-weight:400;line-height:1.2;color:var(--navy);margin-bottom:1.5rem}
+.sidebar-cta{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:var(--white);text-decoration:none;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;padding:12px 24px;border-radius:2px;transition:background 0.2s;margin-top:2rem}
+.sidebar-cta:hover{background:var(--gold);color:var(--navy)}
+.sidebar-cta svg{width:12px;height:12px}
+.content-body p{font-size:0.95rem;color:var(--text-mid);font-weight:300;margin-bottom:1.5rem;line-height:1.85}
+.content-body h3{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--navy);margin:2.5rem 0 0.75rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border)}
+.content-body ul{margin:0 0 1.5rem 1.25rem;}
+.content-body ul li{font-size:0.95rem;color:var(--text-mid);font-weight:300;margin-bottom:0.6rem;line-height:1.75}
+.content-body .highlight{background:var(--gold-pale);border-left:3px solid var(--gold);padding:1.25rem 1.5rem;border-radius:0 2px 2px 0;margin:2rem 0}
+.content-body .highlight p{margin:0;font-size:0.9rem}
+
+.cta-banner{background:var(--navy);padding:80px 8vw;text-align:center}
+.cta-banner-title{font-family:var(--serif);font-size:clamp(1.8rem,4vw,3rem);font-weight:300;color:var(--white);margin-bottom:1rem}
+.cta-banner-title em{color:var(--gold-light);font-style:italic}
+.cta-banner-sub{color:rgba(255,255,255,0.5);font-weight:300;margin-bottom:2.5rem}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy);text-decoration:none;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;padding:14px 32px;border-radius:2px;transition:background 0.2s}
+.cta-btn:hover{background:var(--gold-light)}
+.cta-btn svg{width:12px;height:12px}
+
+footer{background:#06101a;padding:2rem 5vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(201,168,76,0.15)}
+.footer-logo{font-family:var(--serif);font-size:1.1rem;color:var(--gold-light);font-weight:600}
+.footer-copy{font-size:0.78rem;color:rgba(255,255,255,0.3)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:0.78rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--gold)}
+
+[data-lang="en"]{display:none}
+body.lang-en [data-lang="es"]{display:none}
+body.lang-en [data-lang="en"]{display:block}
+body.lang-en span[data-lang="en"]{display:inline}
+body.lang-en span[data-lang="es"]{display:none}
+body.lang-en .content-body[data-lang="en"]{display:block}
+body.lang-en .content-body[data-lang="es"]{display:none}
+
+@media(max-width:768px){
+  .content-grid{grid-template-columns:1fr;gap:2.5rem}
+  .nav-links{display:none}
+  .content-section{padding:60px 6vw}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-name">Crespo &amp; Crespo</span>
+    <span class="nav-logo-tag">Law Firm &middot; Puerto Rico &middot; Florida</span>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="index.html#servicios" data-lang="es">Servicios</a><a href="index.html#servicios" data-lang="en">Services</a></li>
+      <li><a href="index.html#nosotros" data-lang="es">Nosotros</a><a href="index.html#nosotros" data-lang="en">About</a></li>
+      <li><a href="index.html#contacto" data-lang="es">Contacto</a><a href="index.html#contacto" data-lang="en">Contact</a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="index.html#contacto" class="nav-cta">
+      <span data-lang="es">Consulta Gratis</span>
+      <span data-lang="en">Free Consult</span>
+    </a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-bg">NAT</div>
+  <a href="index.html" class="back-link">
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>
+    <span data-lang="es">Todos los servicios</span>
+    <span data-lang="en">All services</span>
+  </a>
+  <p class="hero-label">
+    <span data-lang="es">Área de práctica</span>
+    <span data-lang="en">Practice area</span>
+  </p>
+  <h1 class="hero-title">
+    <span data-lang="es">Naturalización de Sentencia</span>
+    <span data-lang="en">Judgment Domestication</span>
+  </h1>
+  <p class="hero-sub">
+    <span data-lang="es">Tienes sentencia en Puerto Rico pero el deudor tiene activos en Florida — o al revés. Hacemos valer tu sentencia donde están los activos.</span>
+    <span data-lang="en">You have a judgment in Puerto Rico but the debtor's assets are in Florida — or vice versa. We enforce your judgment where the assets are.</span>
+  </p>
+  <div class="hero-tags"><span class="tag">PR ↔ FL</span><span class="tag">Full Faith & Credit</span><span class="tag">Ejecución de sentencia</span><span class="tag">Embargo</span></div>
+</section>
+
+<section style="padding:80px 8vw;">
+  <div class="content-grid" style="max-width:1100px;margin:0 auto;">
+    <div class="sidebar">
+      <p class="sidebar-label" data-lang="es">¿Aplica para ti?</p>
+      <p class="sidebar-label" data-lang="en">Is this right for you?</p>
+      <h2 class="sidebar-title">
+        <span data-lang="es">Tu sentencia tiene valor. Hagámosla valer.</span>
+        <span data-lang="en">Your judgment has value. Let's enforce it.</span>
+      </h2>
+      <a href="index.html#contacto" class="sidebar-cta">
+        <span data-lang="es">Consulta gratis</span>
+        <span data-lang="en">Free consultation</span>
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
+    </div>
+    <div class="content-body" data-lang="es">
+<h3>¿Qué es la naturalización de sentencia?</h3>
+<p>Cuando obtienes una sentencia de cobro de dinero en un estado o jurisdicción, esa sentencia solo tiene fuerza ejecutiva dentro de esa jurisdicción. Si el deudor tiene sus bienes — cuentas bancarias, propiedades, vehículos — en otra jurisdicción, necesitas "naturalizar" o "domesticar" la sentencia allí para poder ejecutarla.</p>
+
+<h3>Puerto Rico ↔ Florida</h3>
+<p>Este es el escenario más común que manejamos. Una empresa o persona con operaciones en ambas jurisdicciones puede tener activos en un lugar y la sentencia en otro. El proceso implica registrar la sentencia en el tribunal del estado donde están los activos y luego proceder con la ejecución.</p>
+<ul>
+  <li>Tienes sentencia en PR y el deudor tiene propiedades o cuentas en FL</li>
+  <li>Tienes sentencia en FL y el deudor opera o reside en PR</li>
+  <li>El deudor intentó evadir la sentencia mudándose de jurisdicción</li>
+</ul>
+
+<h3>El proceso</h3>
+<p>Bajo la Cláusula de "Full Faith and Credit" de la Constitución de los Estados Unidos, los estados y territorios están obligados a reconocer las sentencias válidas de otras jurisdicciones. Registramos la sentencia en el tribunal correspondiente, notificamos al deudor, y procedemos con el embargo de los activos identificados.</p>
+<ul>
+  <li>Verificación de la sentencia original y su validez</li>
+  <li>Registro en el tribunal de la jurisdicción donde están los activos</li>
+  <li>Notificación formal al deudor</li>
+  <li>Identificación y embargo de activos (cuentas, salarios, propiedades)</li>
+</ul>
+
+<div class="highlight"><p><strong>Importante:</strong> El deudor tiene un período limitado para impugnar el registro de la sentencia. Por eso es crucial actuar rápido una vez que sepas dónde están sus activos.</p></div>
+</div>
+    <div class="content-body" data-lang="en">
+<h3>What is judgment domestication?</h3>
+<p>When you obtain a money judgment in one state or jurisdiction, that judgment only has enforcement power within that jurisdiction. If the debtor has assets — bank accounts, properties, vehicles — in another jurisdiction, you need to "domesticate" the judgment there in order to enforce it.</p>
+
+<h3>Puerto Rico ↔ Florida</h3>
+<p>This is the most common scenario we handle. A business or person with operations in both jurisdictions may have assets in one place and the judgment in another. The process involves registering the judgment in the court of the state where the assets are located, then proceeding with enforcement.</p>
+<ul>
+  <li>You have a judgment in PR and the debtor has properties or accounts in FL</li>
+  <li>You have a judgment in FL and the debtor operates or resides in PR</li>
+  <li>The debtor attempted to evade the judgment by moving jurisdictions</li>
+</ul>
+
+<h3>The process</h3>
+<p>Under the Full Faith and Credit Clause of the United States Constitution, states and territories are required to recognize valid judgments from other jurisdictions. We register the judgment in the appropriate court, notify the debtor, and proceed with levying the identified assets.</p>
+<ul>
+  <li>Verification of the original judgment and its validity</li>
+  <li>Registration in the court of the jurisdiction where assets are located</li>
+  <li>Formal notification to the debtor</li>
+  <li>Identification and levy of assets (accounts, wages, properties)</li>
+</ul>
+
+<div class="highlight"><p><strong>Important:</strong> The debtor has a limited period to challenge the registration of the judgment. This is why it's crucial to act quickly once you know where their assets are.</p></div>
+</div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <h2 class="cta-banner-title">
+    <span data-lang="es">¿Listo para dar el <em>primer paso?</em></span>
+    <span data-lang="en">Ready to take the <em>first step?</em></span>
+  </h2>
+  <p class="cta-banner-sub">
+    <span data-lang="es">La consulta inicial es gratuita y confidencial.</span>
+    <span data-lang="en">The initial consultation is free and confidential.</span>
+  </p>
+  <a href="index.html#contacto" class="cta-btn">
+    <span data-lang="es">Contáctenos hoy</span>
+    <span data-lang="en">Contact us today</span>
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+  </a>
+</section>
+
+<footer>
+  <div class="footer-logo">Crespo &amp; Crespo Law</div>
+  <p class="footer-copy">&copy; 2025 Crespo &amp; Crespo. <span data-lang="es">Todos los derechos reservados.</span><span data-lang="en">All rights reserved.</span></p>
+  <nav class="footer-links">
+    <a href="index.html#servicios" data-lang="es">Servicios</a>
+    <a href="index.html#servicios" data-lang="en">Services</a>
+    <a href="index.html#contacto" data-lang="es">Contacto</a>
+    <a href="index.html#contacto" data-lang="en">Contact</a>
+  </nav>
+</footer>
+
+<script>
+function setLang(lang){
+  document.body.classList.toggle('lang-en', lang==='en');
+  document.getElementById('btn-es').classList.toggle('active', lang==='es');
+  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+}
+</script>
+</body>
+</html>
