@@ -2,22 +2,27 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/png" href="icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Crespo & Crespo Law</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
+  
   :root {
-    --navy: #0d1b2a;
-    --navy-mid: #1a2f45;
-    --gold: #b8962e;
-    --gold-light: #d4ad4a;
-    --gold-pale: #f5edd8;
-    --cream: #f8f5ef;
-    --white: #ffffff;
-    --gray-text: #5a6270;
-    --border: #e2ddd4;
+    --navy:        #06101A;
+    --midnight:    #0D1F33;
+    --gold:        #C9A84C;
+    --gilt:        #E2C97E;
+    --parchment:   #F5F0E6;
+    --docwhite:    #FDFBF7;
+    --mist:        #8B9BA8;
+    --burgundy:    #5C2B2B;
+    --border:      rgba(6,16,26,0.09);
+    --serif:       'Cormorant Garamond', Georgia, serif;
+    --sans:        'DM Sans', sans-serif;
+    --transition:  0.3s cubic-bezier(0.4,0,0.2,1);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,7 +31,7 @@
 
   body {
     font-family: 'DM Sans', sans-serif;
-    background: var(--white);
+    background: var(--docwhite);
     color: var(--navy);
     font-size: 16px;
     line-height: 1.7;
@@ -36,7 +41,7 @@
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: #06101a;
+    background: var(--navy);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(201,168,76,0.3);
     padding: 0 5vw;
@@ -50,7 +55,7 @@
   }
   .nav-logo-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem; font-weight: 600; color: #e2c77a;
+    font-size: 1.35rem; font-weight: 600; color: var(--gilt);
     letter-spacing: 0.02em;
   }
   .nav-logo-tag {
@@ -68,7 +73,7 @@
     text-decoration: none; letter-spacing: 0.04em;
     transition: color 0.2s;
   }
-  .nav-links a:hover { color: #e2c77a; }
+  .nav-links a:hover { color: var(--gilt); }
 
   .lang-toggle {
     display: flex; border: 1px solid rgba(201,168,76,0.4); border-radius: 4px; overflow: hidden;
@@ -78,15 +83,15 @@
     border: none; cursor: pointer; background: transparent; color: rgba(255,255,255,0.45);
     transition: background 0.2s, color 0.2s;
   }
-  .lang-btn.active { background: var(--gold); color: #06101a; }
+  .lang-btn.active { background: var(--gold); color: var(--navy); }
 
   .nav-cta {
-    background: var(--gold); color: var(--white); border: none; cursor: pointer;
+    background: var(--gold); color: var(--docwhite); border: none; cursor: pointer;
     padding: 9px 22px; border-radius: 4px; font-size: 0.82rem; font-weight: 500;
     letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.2s;
     text-decoration: none; display: inline-block;
   }
-  .nav-cta:hover { background: var(--gold-light); }
+  .nav-cta:hover { background: var(--gilt); }
 
   /* HERO */
   .hero {
@@ -127,10 +132,10 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.8rem, 5.5vw, 4.8rem);
     font-weight: 500; line-height: 1.08;
-    color: var(--white); margin-bottom: 1.5rem;
+    color: var(--docwhite); margin-bottom: 1.5rem;
     animation: fadeUp 0.7s ease both 0.25s;
   }
-  .hero h1 em { font-style: italic; color: var(--gold-light); }
+  .hero h1 em { font-style: italic; color: var(--gilt); }
 
   .hero-desc {
     font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.65);
@@ -144,12 +149,12 @@
   }
 
   .btn-primary {
-    background: var(--gold); color: var(--white); text-decoration: none;
+    background: var(--gold); color: var(--docwhite); text-decoration: none;
     padding: 14px 32px; border-radius: 4px; font-size: 0.85rem; font-weight: 500;
     letter-spacing: 0.08em; text-transform: uppercase; display: inline-block;
     transition: background 0.2s;
   }
-  .btn-primary:hover { background: var(--gold-light); }
+  .btn-primary:hover { background: var(--gilt); }
 
   .btn-outline {
     border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8);
@@ -166,7 +171,7 @@
   }
   .stat-num {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem; font-weight: 600; color: var(--gold-light); line-height: 1;
+    font-size: 2.2rem; font-weight: 600; color: var(--gilt); line-height: 1;
   }
   .stat-label {
     font-size: 0.75rem; color: rgba(255,255,255,0.45);
@@ -192,12 +197,12 @@
   }
 
   .section-subtitle {
-    font-size: 1rem; font-weight: 300; color: var(--gray-text);
+    font-size: 1rem; font-weight: 300; color: var(--mist);
     max-width: 520px; line-height: 1.8;
   }
 
   /* SERVICES */
-  .services-section { background: var(--cream); }
+  .services-section { background: var(--parchment); }
 
   .services-header {
     display: flex; justify-content: space-between; align-items: flex-end;
@@ -213,12 +218,12 @@
   }
 
   .service-card {
-    background: var(--white); padding: 2.5rem;
+    background: var(--docwhite); padding: 2.5rem;
     cursor: pointer; transition: background 0.2s;
     position: relative; overflow: hidden;
     text-decoration: none; display: block; color: inherit;
   }
-  .service-card:hover { background: var(--gold-pale); }
+  .service-card:hover { background: var(--parchment); }
   .service-card:hover .service-arrow { opacity: 1; transform: translate(0, 0); }
 
   .service-num {
@@ -239,7 +244,7 @@
   }
 
   .service-desc {
-    font-size: 0.9rem; color: var(--gray-text); line-height: 1.75;
+    font-size: 0.9rem; color: var(--mist); line-height: 1.75;
   }
 
   .service-tags {
@@ -259,7 +264,7 @@
   }
 
   /* APPROACH */
-  .approach-section { background: var(--white); }
+  .approach-section { background: var(--docwhite); }
 
   .approach-grid {
     display: grid; grid-template-columns: 1fr 1fr;
@@ -281,7 +286,7 @@
   .approach-quote {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.6rem; font-weight: 400; font-style: italic;
-    color: var(--white); line-height: 1.5; position: relative; margin-bottom: 1.5rem;
+    color: var(--docwhite); line-height: 1.5; position: relative; margin-bottom: 1.5rem;
   }
 
   .approach-quote::before {
@@ -310,12 +315,12 @@
   }
 
   .point-text p {
-    font-size: 0.88rem; font-weight: 300; color: var(--gray-text); line-height: 1.7;
+    font-size: 0.88rem; font-weight: 300; color: var(--mist); line-height: 1.7;
   }
 
   /* CONTACT */
   .contact-section { background: var(--navy); }
-  .contact-section .section-title { color: var(--white); }
+  .contact-section .section-title { color: var(--docwhite); }
   .contact-section .section-subtitle { color: rgba(255,255,255,0.5); }
 
   .contact-grid {
@@ -335,7 +340,7 @@
     text-decoration: none; display: block; line-height: 1.6;
   }
 
-  .contact-item a:hover { color: var(--gold-light); }
+  .contact-item a:hover { color: var(--gilt); }
 
   .contact-form { display: grid; gap: 1rem; }
 
@@ -353,7 +358,7 @@
   .form-group textarea {
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.12);
-    color: var(--white);
+    color: var(--docwhite);
     padding: 12px 14px; border-radius: 4px;
     font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 300;
     transition: border-color 0.2s, background 0.2s;
@@ -372,7 +377,7 @@
     background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
   }
 
-  .form-group select option { background: var(--navy-mid); color: var(--white); }
+  .form-group select option { background: var(--midnight); color: var(--docwhite); }
 
   .form-group textarea { resize: vertical; min-height: 100px; }
 
@@ -380,14 +385,14 @@
   .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
 
   .form-submit {
-    background: var(--gold); color: var(--white); border: none;
+    background: var(--gold); color: var(--docwhite); border: none;
     padding: 14px 32px; border-radius: 4px; cursor: pointer;
     font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500;
     letter-spacing: 0.1em; text-transform: uppercase;
     transition: background 0.2s; justify-self: start; margin-top: 0.5rem;
   }
 
-  .form-submit:hover { background: var(--gold-light); }
+  .form-submit:hover { background: var(--gilt); }
 
   .form-disclaimer {
     font-size: 0.75rem; color: rgba(255,255,255,0.3); line-height: 1.6;
@@ -404,7 +409,7 @@
 
   .footer-logo {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem; font-weight: 600; color: var(--white);
+    font-size: 1.2rem; font-weight: 600; color: var(--docwhite);
   }
 
   .footer-copy {
@@ -418,19 +423,63 @@
   }
   .footer-links a:hover { color: var(--gold); }
 
-  /* LANGUAGE SYSTEM */
+  
+  /* ── LANGUAGE TOGGLE SYSTEM ───────────────────────── */
   [data-lang="en"] { display: none; }
-  body.lang-en [data-lang="es"] { display: none; }
-  body.lang-en [data-lang="en"] { display: block; }
-  body.lang-en span[data-lang="en"],
-  body.lang-en a[data-lang="en"] { display: inline; }
-  body.lang-en span[data-lang="es"],
-  body.lang-en a[data-lang="es"] { display: none; }
-  body.lang-en li[data-lang="en"] { display: list-item; }
-  body.lang-en li[data-lang="es"] { display: none; }
 
-  /* MOBILE */
-  @media (max-width: 768px) {
+  body.lang-en [data-lang="es"] { display: none !important; }
+  body.lang-en [data-lang="en"] { display: revert !important; }
+
+  body.lang-en span[data-lang="en"],
+  body.lang-en a[data-lang="en"],
+  body.lang-en button[data-lang="en"] { display: inline !important; }
+
+  body.lang-en span[data-lang="es"],
+  body.lang-en a[data-lang="es"],
+  body.lang-en button[data-lang="es"] { display: none !important; }
+
+  body.lang-en li[data-lang="en"] { display: list-item !important; }
+  body.lang-en li[data-lang="es"] { display: none !important; }
+
+  body.lang-en div[data-lang="en"],
+  body.lang-en p[data-lang="en"],
+  body.lang-en h1[data-lang="en"],
+  body.lang-en h2[data-lang="en"],
+  body.lang-en h3[data-lang="en"] { display: block !important; }
+
+  body.lang-en div[data-lang="es"],
+  body.lang-en p[data-lang="es"],
+  body.lang-en h1[data-lang="es"],
+  body.lang-en h2[data-lang="es"],
+  body.lang-en h3[data-lang="es"] { display: none !important; }
+
+  /* Toggle button styling */
+  .lang-toggle {
+    display: flex;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .lang-btn {
+    padding: 5px 13px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    color: rgba(255,255,255,0.45);
+    transition: background 0.2s, color 0.2s;
+    font-family: var(--sans);
+  }
+  .lang-btn.active {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .lang-btn:hover:not(.active) {
+    color: rgba(255,255,255,0.8);
+  }
+@media (max-width: 768px) {
     .nav-links, .nav-cta { display: none; }
     .services-grid { grid-template-columns: 1fr; }
     .approach-grid { grid-template-columns: 1fr; }
@@ -451,21 +500,33 @@
 
 <!-- NAV -->
 <nav id="main-nav">
-  <a href="#inicio" class="nav-logo">
-    <span class="nav-logo-name">Crespo &amp; Crespo</span>
-    <span class="nav-logo-tag">Law Firm &middot; Puerto Rico &middot; Florida</span>
+  <a href="#inicio" class="nav-logo" style="text-decoration:none;display:flex;align-items:center;">
+    <img src="logo.png" alt="Crespo &amp; Crespo Law" style="height:44px;width:auto;display:block;">
   </a>
   <div class="nav-right">
     <ul class="nav-links">
-      <li><a href="#servicios" data-lang="es">Servicios</a><a href="#servicios" data-lang="en">Services</a></li>
-      <li><a href="#nosotros" data-lang="es">Nosotros</a><a href="#nosotros" data-lang="en">About</a></li>
-      <li><a href="#contacto" data-lang="es">Contacto</a><a href="#contacto" data-lang="en">Contact</a></li>
+      <li>
+        <a href="#servicios" data-lang="es">Servicios</a>
+        <a href="#servicios" data-lang="en">Services</a>
+      </li>
+      <li>
+        <a href="#nosotros" data-lang="es">Nosotros</a>
+        <a href="#nosotros" data-lang="en">About</a>
+      </li>
+      <li>
+        <a href="blog.html" data-lang="es">Blog</a>
+        <a href="blog.html" data-lang="en">Blog</a>
+      </li>
+      <li>
+        <a href="#contacto" data-lang="es">Contacto</a>
+        <a href="#contacto" data-lang="en">Contact</a>
+      </li>
     </ul>
     <div class="lang-toggle">
-      <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
       <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
     </div>
-    <a href="#contacto" class="nav-cta">
+    <a href="#contacto" class="nav-cta" style="text-decoration:none;">
       <span data-lang="es">Consulta Gratis</span>
       <span data-lang="en">Free Consult</span>
     </a>
@@ -477,6 +538,7 @@
   <div class="hero-line"></div>
   <div class="hero-bg-text">LEX</div>
   <div class="hero-content">
+    <img src="icon.png" alt="" class="hero-icon" style="width:56px;height:56px;object-fit:contain;margin:0 auto 1.5rem;display:block;opacity:0.9;">
     <p class="hero-eyebrow">
       <span data-lang="es">Firma de Abogados &middot; Puerto Rico &middot; Florida</span>
       <span data-lang="en">Law Firm &middot; Puerto Rico &middot; Florida</span>

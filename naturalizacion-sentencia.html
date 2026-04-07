@@ -2,33 +2,43 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/png" href="icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Naturalización de Sentencia | Crespo &amp; Crespo Law</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --navy:#0d1b2a;--gold:#c9a84c;--gold-light:#e2c77a;--gold-pale:#f5edd8;
-  --cream:#faf8f4;--white:#ffffff;--text-mid:#4a5568;--border:rgba(13,27,42,0.1);
-  --serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',sans-serif;
-  --transition:0.3s cubic-bezier(0.4,0,0.2,1);
-}
+
+  :root {
+    --navy:        #06101A;
+    --midnight:    #0D1F33;
+    --gold:        #C9A84C;
+    --gilt:        #E2C97E;
+    --parchment:   #F5F0E6;
+    --docwhite:    #FDFBF7;
+    --mist:        #8B9BA8;
+    --burgundy:    #5C2B2B;
+    --border:      rgba(6,16,26,0.09);
+    --serif:       'Cormorant Garamond', Georgia, serif;
+    --sans:        'DM Sans', sans-serif;
+    --transition:  0.3s cubic-bezier(0.4,0,0.2,1);
+  }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--cream);color:var(--navy);font-size:16px;line-height:1.7;overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#06101a;backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,168,76,0.3);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:68px}
+body{font-family:var(--sans);background:var(--parchment);color:var(--navy);font-size:16px;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy);backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,168,76,0.3);padding:0 5vw;display:flex;align-items:center;justify-content:space-between;height:68px}
 .nav-logo{display:flex;flex-direction:column;line-height:1.1;text-decoration:none}
-.nav-logo-name{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:#e2c77a;letter-spacing:0.02em}
+.nav-logo-name{font-family:var(--serif);font-size:1.35rem;font-weight:600;color:var(--gilt);letter-spacing:0.02em}
 .nav-logo-tag{font-size:0.65rem;font-weight:400;color:rgba(255,255,255,0.5);letter-spacing:0.18em;text-transform:uppercase}
 .nav-right{display:flex;align-items:center;gap:2rem}
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{font-size:0.85rem;font-weight:400;color:rgba(255,255,255,0.75);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s}
-.nav-links a:hover{color:#e2c77a}
+.nav-links a:hover{color:var(--gilt)}
 .lang-toggle{display:flex;border:1px solid rgba(201,168,76,0.4);border-radius:4px;overflow:hidden}
 .lang-btn{padding:4px 12px;font-size:0.78rem;font-weight:500;letter-spacing:0.06em;border:none;cursor:pointer;background:transparent;color:rgba(255,255,255,0.45);transition:background 0.2s,color 0.2s;font-family:var(--sans)}
-.lang-btn.active{background:var(--gold);color:#06101a}
+.lang-btn.active{background:var(--gold);color:var(--navy)}
 .nav-cta{background:var(--gold);color:var(--navy);border:none;cursor:pointer;padding:9px 22px;border-radius:4px;font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;transition:background 0.2s;text-decoration:none;display:inline-block}
-.nav-cta:hover{background:var(--gold-light)}
+.nav-cta:hover{background:var(--gilt)}
 
 .page-hero{background:var(--navy);padding:130px 8vw 80px;position:relative;overflow:hidden}
 .page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.3),transparent)}
@@ -37,8 +47,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#06101a;backdrop-
 .back-link:hover{color:var(--gold)}
 .back-link svg{width:14px;height:14px}
 .hero-label{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem}
-.hero-title{font-family:var(--serif);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:1rem}
-.hero-title em{font-style:italic;color:var(--gold-light)}
+.hero-title{font-family:var(--serif);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:300;color:var(--docwhite);line-height:1.1;margin-bottom:1rem}
+.hero-title em{font-style:italic;color:var(--gilt)}
 .hero-sub{font-size:1rem;color:rgba(255,255,255,0.5);font-weight:300;max-width:580px;margin-bottom:2rem}
 .hero-tags{display:flex;flex-wrap:wrap;gap:8px}
 .hero-tag{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;padding:5px 12px;border:1px solid rgba(201,168,76,0.3);color:rgba(255,255,255,0.5);border-radius:2px}
@@ -47,26 +57,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#06101a;backdrop-
 .content-grid{display:grid;grid-template-columns:1fr 2fr;gap:5rem;align-items:start}
 .sidebar-label{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem}
 .sidebar-title{font-family:var(--serif);font-size:1.8rem;font-weight:400;line-height:1.2;color:var(--navy);margin-bottom:1.5rem}
-.sidebar-cta{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:var(--white);text-decoration:none;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;padding:12px 24px;border-radius:2px;transition:background 0.2s;margin-top:2rem}
+.sidebar-cta{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:var(--docwhite);text-decoration:none;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;padding:12px 24px;border-radius:2px;transition:background 0.2s;margin-top:2rem}
 .sidebar-cta:hover{background:var(--gold);color:var(--navy)}
 .sidebar-cta svg{width:12px;height:12px}
-.content-body p{font-size:0.95rem;color:var(--text-mid);font-weight:300;margin-bottom:1.5rem;line-height:1.85}
+.content-body p{font-size:0.95rem;color:var(--mist);font-weight:300;margin-bottom:1.5rem;line-height:1.85}
 .content-body h3{font-family:var(--serif);font-size:1.4rem;font-weight:400;color:var(--navy);margin:2.5rem 0 0.75rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border)}
 .content-body ul{margin:0 0 1.5rem 1.25rem;}
-.content-body ul li{font-size:0.95rem;color:var(--text-mid);font-weight:300;margin-bottom:0.6rem;line-height:1.75}
-.content-body .highlight{background:var(--gold-pale);border-left:3px solid var(--gold);padding:1.25rem 1.5rem;border-radius:0 2px 2px 0;margin:2rem 0}
+.content-body ul li{font-size:0.95rem;color:var(--mist);font-weight:300;margin-bottom:0.6rem;line-height:1.75}
+.content-body .highlight{background:var(--parchment);border-left:3px solid var(--gold);padding:1.25rem 1.5rem;border-radius:0 2px 2px 0;margin:2rem 0}
 .content-body .highlight p{margin:0;font-size:0.9rem}
 
 .cta-banner{background:var(--navy);padding:80px 8vw;text-align:center}
-.cta-banner-title{font-family:var(--serif);font-size:clamp(1.8rem,4vw,3rem);font-weight:300;color:var(--white);margin-bottom:1rem}
-.cta-banner-title em{color:var(--gold-light);font-style:italic}
+.cta-banner-title{font-family:var(--serif);font-size:clamp(1.8rem,4vw,3rem);font-weight:300;color:var(--docwhite);margin-bottom:1rem}
+.cta-banner-title em{color:var(--gilt);font-style:italic}
 .cta-banner-sub{color:rgba(255,255,255,0.5);font-weight:300;margin-bottom:2.5rem}
 .cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy);text-decoration:none;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;padding:14px 32px;border-radius:2px;transition:background 0.2s}
-.cta-btn:hover{background:var(--gold-light)}
+.cta-btn:hover{background:var(--gilt)}
 .cta-btn svg{width:12px;height:12px}
 
-footer{background:#06101a;padding:2rem 5vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(201,168,76,0.15)}
-.footer-logo{font-family:var(--serif);font-size:1.1rem;color:var(--gold-light);font-weight:600}
+footer{background:var(--navy);padding:2rem 5vw;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(201,168,76,0.15)}
+.footer-logo{font-family:var(--serif);font-size:1.1rem;color:var(--gilt);font-weight:600}
 .footer-copy{font-size:0.78rem;color:rgba(255,255,255,0.3)}
 .footer-links{display:flex;gap:1.5rem}
 .footer-links a{font-size:0.78rem;color:rgba(255,255,255,0.4);text-decoration:none;transition:color 0.2s}
@@ -85,13 +95,68 @@ body.lang-en .content-body[data-lang="es"]{display:none}
   .nav-links{display:none}
   .content-section{padding:60px 6vw}
 }
+
+  /* ── LANGUAGE TOGGLE SYSTEM ───────────────────────── */
+  [data-lang="en"] { display: none; }
+
+  body.lang-en [data-lang="es"] { display: none !important; }
+  body.lang-en [data-lang="en"] { display: revert !important; }
+
+  body.lang-en span[data-lang="en"],
+  body.lang-en a[data-lang="en"],
+  body.lang-en button[data-lang="en"] { display: inline !important; }
+
+  body.lang-en span[data-lang="es"],
+  body.lang-en a[data-lang="es"],
+  body.lang-en button[data-lang="es"] { display: none !important; }
+
+  body.lang-en li[data-lang="en"] { display: list-item !important; }
+  body.lang-en li[data-lang="es"] { display: none !important; }
+
+  body.lang-en div[data-lang="en"],
+  body.lang-en p[data-lang="en"],
+  body.lang-en h1[data-lang="en"],
+  body.lang-en h2[data-lang="en"],
+  body.lang-en h3[data-lang="en"] { display: block !important; }
+
+  body.lang-en div[data-lang="es"],
+  body.lang-en p[data-lang="es"],
+  body.lang-en h1[data-lang="es"],
+  body.lang-en h2[data-lang="es"],
+  body.lang-en h3[data-lang="es"] { display: none !important; }
+
+  /* Toggle button styling */
+  .lang-toggle {
+    display: flex;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .lang-btn {
+    padding: 5px 13px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    color: rgba(255,255,255,0.45);
+    transition: background 0.2s, color 0.2s;
+    font-family: var(--sans);
+  }
+  .lang-btn.active {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .lang-btn:hover:not(.active) {
+    color: rgba(255,255,255,0.8);
+  }
 </style>
 </head>
-<body>
+<body class="lang-es">
 <nav>
-  <a href="index.html" class="nav-logo">
-    <span class="nav-logo-name">Crespo &amp; Crespo</span>
-    <span class="nav-logo-tag">Law Firm &middot; Puerto Rico &middot; Florida</span>
+    <a href="index.html" class="nav-logo" style="text-decoration:none;display:flex;align-items:center;">
+    <img src="logo.png" alt="Crespo &amp; Crespo Law" style="height:44px;width:auto;display:block;">
   </a>
   <div class="nav-right">
     <ul class="nav-links">
@@ -223,11 +288,33 @@ body.lang-en .content-body[data-lang="es"]{display:none}
   </nav>
 </footer>
 
+
+
 <script>
-function setLang(lang){
-  document.body.classList.toggle('lang-en', lang==='en');
-  document.getElementById('btn-es').classList.toggle('active', lang==='es');
-  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+(function() {
+  // Restore saved language on page load
+  var saved = localStorage.getItem('cc_lang') || 'es';
+  applyLang(saved, false);
+})();
+
+function setLang(lang) {
+  applyLang(lang, true);
+}
+
+function applyLang(lang, save) {
+  document.body.classList.toggle('lang-en', lang === 'en');
+  document.body.classList.toggle('lang-es', lang === 'es');
+  var btnEs = document.getElementById('btn-es');
+  var btnEn = document.getElementById('btn-en');
+  if (btnEs) btnEs.classList.toggle('active', lang === 'es');
+  if (btnEn) btnEn.classList.toggle('active', lang === 'en');
+  document.documentElement.lang = lang;
+  if (save) localStorage.setItem('cc_lang', lang);
+  // Update form placeholders if present
+  var nb = document.getElementById('f-nombre');
+  if (nb) nb.placeholder = lang === 'en' ? 'Your full name' : 'Tu nombre completo';
+  var mb = document.getElementById('f-msg');
+  if (mb) mb.placeholder = lang === 'en' ? 'Briefly describe your situation...' : 'Describe tu situación en unas líneas...';
 }
 </script>
 </body>

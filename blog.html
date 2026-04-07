@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | Crespo &amp; Crespo Law</title>
+<meta name="description" content="Recursos legales y guías educativas para individuos, familias y empresas en Puerto Rico y Florida.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:        #06101A;
+    --midnight:    #0D1F33;
+    --gold:        #C9A84C;
+    --gilt:        #E2C97E;
+    --parchment:   #F5F0E6;
+    --docwhite:    #FDFBF7;
+    --mist:        #8B9BA8;
+    --burgundy:    #5C2B2B;
+    --border:      rgba(6,16,26,0.09);
+    --serif:       'Cormorant Garamond', Georgia, serif;
+    --sans:        'DM Sans', sans-serif;
+    --transition:  0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--parchment); color: var(--navy); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+
+  /* ── NAV ─────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding: 0 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+  }
+  .nav-logo { text-decoration: none; display: flex; align-items: center; }
+  .nav-right { display: flex; align-items: center; gap: 2rem; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem; font-weight: 400; color: rgba(255,255,255,0.75);
+    text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active-page { color: var(--gilt); }
+  .lang-toggle {
+    display: flex; border: 1px solid rgba(201,168,76,0.4); border-radius: 4px; overflow: hidden;
+  }
+  .lang-btn {
+    padding: 5px 13px; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em;
+    border: none; cursor: pointer; background: transparent; color: rgba(255,255,255,0.45);
+    transition: background 0.2s, color 0.2s; font-family: var(--sans);
+  }
+  .lang-btn.active { background: var(--gold); color: var(--navy); }
+  .lang-btn:hover:not(.active) { color: rgba(255,255,255,0.8); }
+  .nav-cta {
+    background: var(--gold); color: var(--navy); padding: 9px 22px; border-radius: 4px;
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+    transition: background 0.2s; text-decoration: none; display: inline-block;
+  }
+  .nav-cta:hover { background: var(--gilt); }
+
+  /* ── LANG SYSTEM ─────────────────────────────────── */
+  [data-lang="en"] { display: none; }
+  body.lang-en [data-lang="es"] { display: none !important; }
+  body.lang-en [data-lang="en"] { display: revert !important; }
+  body.lang-en span[data-lang="en"], body.lang-en a[data-lang="en"] { display: inline !important; }
+  body.lang-en span[data-lang="es"], body.lang-en a[data-lang="es"] { display: none !important; }
+  body.lang-en li[data-lang="en"] { display: list-item !important; }
+  body.lang-en li[data-lang="es"] { display: none !important; }
+  body.lang-en div[data-lang="en"],body.lang-en p[data-lang="en"],
+  body.lang-en h1[data-lang="en"],body.lang-en h2[data-lang="en"],
+  body.lang-en h3[data-lang="en"],body.lang-en article[data-lang="en"] { display: block !important; }
+  body.lang-en div[data-lang="es"],body.lang-en p[data-lang="es"],
+  body.lang-en h1[data-lang="es"],body.lang-en h2[data-lang="es"],
+  body.lang-en h3[data-lang="es"],body.lang-en article[data-lang="es"] { display: none !important; }
+
+  /* ── HERO ─────────────────────────────────────────── */
+  .blog-hero {
+    background: var(--navy); padding: 130px 8vw 80px;
+    position: relative; overflow: hidden;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+  .blog-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 80% at 100% 50%, rgba(201,168,76,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 700px; position: relative; }
+  .hero-label {
+    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem; display: block;
+  }
+  .hero-title {
+    font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 300; color: var(--docwhite); line-height: 1.1; margin-bottom: 1rem;
+  }
+  .hero-title em { font-style: italic; color: var(--gilt); }
+  .hero-desc { color: rgba(255,255,255,0.5); font-weight: 300; max-width: 520px; }
+
+  /* ── FILTER BAR ──────────────────────────────────── */
+  .filter-bar {
+    background: var(--docwhite); border-bottom: 1px solid var(--border);
+    padding: 0 8vw; display: flex; align-items: center; gap: 0; overflow-x: auto;
+    position: sticky; top: 68px; z-index: 90;
+  }
+  .filter-btn {
+    font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.1em;
+    text-transform: uppercase; font-weight: 500; padding: 1rem 1.25rem;
+    border: none; background: transparent; color: var(--mist); cursor: pointer;
+    border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .filter-btn:hover { color: var(--navy); }
+  .filter-btn.active { color: var(--navy); border-bottom-color: var(--gold); }
+
+  /* ── BLOG GRID ───────────────────────────────────── */
+  .blog-section { padding: 60px 8vw 100px; }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem; margin-top: 0;
+  }
+
+  /* ── POST CARD ───────────────────────────────────── */
+  .post-card {
+    background: var(--docwhite); border: 1px solid var(--border);
+    border-radius: 2px; overflow: hidden; display: flex; flex-direction: column;
+    transition: box-shadow var(--transition), transform var(--transition);
+    text-decoration: none; color: inherit;
+  }
+  .post-card:hover {
+    box-shadow: 0 8px 32px rgba(6,16,26,0.1);
+    transform: translateY(-3px);
+  }
+  .post-card-img {
+    height: 200px; background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .post-card-img-bg {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .post-card-img-letter {
+    font-family: var(--serif); font-size: 9rem; font-weight: 300; font-style: italic;
+    color: rgba(201,168,76,0.12); line-height: 1; user-select: none;
+  }
+  .post-card-tag {
+    position: absolute; top: 1rem; left: 1rem;
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    background: var(--gold); color: var(--navy); font-weight: 500;
+    padding: 4px 10px; border-radius: 2px;
+  }
+  .post-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 0.75rem; }
+  .post-card-meta {
+    font-size: 0.72rem; color: var(--mist); letter-spacing: 0.05em;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .post-card-meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--mist); }
+  .post-card-title {
+    font-family: var(--serif); font-size: 1.3rem; font-weight: 400; line-height: 1.25;
+    color: var(--navy);
+  }
+  .post-card-excerpt {
+    font-size: 0.88rem; color: var(--mist); font-weight: 300; line-height: 1.7;
+    flex: 1;
+  }
+  .post-card-footer {
+    padding: 1rem 1.5rem; border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .post-card-read {
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--navy); font-weight: 500; display: flex; align-items: center; gap: 6px;
+  }
+  .post-card-read svg { width: 12px; height: 12px; transition: transform 0.2s; }
+  .post-card:hover .post-card-read svg { transform: translateX(4px); }
+  .post-card-time { font-size: 0.72rem; color: var(--mist); }
+
+  /* ── EMPTY STATE ─────────────────────────────────── */
+  .coming-soon {
+    grid-column: 1 / -1; text-align: center;
+    padding: 5rem 2rem;
+    display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+  }
+  .coming-soon-icon {
+    width: 72px; height: 72px; background: rgba(201,168,76,0.1);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  }
+  .coming-soon-icon svg { width: 28px; height: 28px; color: var(--gold); }
+  .coming-soon h3 {
+    font-family: var(--serif); font-size: 1.8rem; font-weight: 300; color: var(--navy);
+  }
+  .coming-soon p { font-size: 0.9rem; color: var(--mist); max-width: 420px; line-height: 1.7; }
+  .coming-soon-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--navy); color: var(--docwhite); text-decoration: none;
+    font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;
+    padding: 12px 24px; border-radius: 2px; transition: background 0.2s; margin-top: 0.5rem;
+  }
+  .coming-soon-cta:hover { background: var(--gold); color: var(--navy); }
+
+  /* ── NEWSLETTER STRIP ────────────────────────────── */
+  .newsletter {
+    background: var(--midnight); padding: 60px 8vw;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 3rem; flex-wrap: wrap;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+  .newsletter-text { flex: 1; min-width: 260px; }
+  .newsletter-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+  .newsletter-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; color: var(--docwhite); line-height: 1.2; }
+  .newsletter-title em { color: var(--gilt); font-style: italic; }
+  .newsletter-form { display: flex; gap: 0; flex: 1; min-width: 300px; max-width: 480px; }
+  .newsletter-input {
+    flex: 1; padding: 12px 16px; background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12); border-right: none;
+    color: var(--docwhite); font-family: var(--sans); font-size: 0.9rem;
+    outline: none; border-radius: 2px 0 0 2px; transition: border-color 0.2s;
+  }
+  .newsletter-input::placeholder { color: rgba(255,255,255,0.25); }
+  .newsletter-input:focus { border-color: rgba(201,168,76,0.5); }
+  .newsletter-submit {
+    background: var(--gold); color: var(--navy); border: none; cursor: pointer;
+    font-family: var(--sans); font-size: 0.75rem; letter-spacing: 0.1em;
+    text-transform: uppercase; font-weight: 500; padding: 12px 20px;
+    border-radius: 0 2px 2px 0; transition: background 0.2s; white-space: nowrap;
+  }
+  .newsletter-submit:hover { background: var(--gilt); }
+
+  /* ── FOOTER ──────────────────────────────────────── */
+  footer {
+    background: #080e18; padding: 2.5rem 5vw;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .footer-logo { font-family: var(--serif); font-size: 1.1rem; color: var(--gilt); font-weight: 600; }
+  .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ── REVEAL ──────────────────────────────────────── */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    .nav-links, .nav-cta { display: none; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .newsletter { flex-direction: column; }
+    .newsletter-form { width: 100%; }
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body class="lang-es">
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo" style="text-decoration:none;display:flex;align-items:center;">
+    <img src="logo.png" alt="Crespo &amp; Crespo Law" style="height:44px;width:auto;display:block;">
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li>
+        <a href="index.html#servicios" data-lang="es">Servicios</a>
+        <a href="index.html#servicios" data-lang="en">Services</a>
+      </li>
+      <li>
+        <a href="blog.html" class="active-page" data-lang="es">Blog</a>
+        <a href="blog.html" class="active-page" data-lang="en">Blog</a>
+      </li>
+      <li>
+        <a href="index.html#contacto" data-lang="es">Contacto</a>
+        <a href="index.html#contacto" data-lang="en">Contact</a>
+      </li>
+    </ul>
+    <div class="lang-toggle">
+      <button class="lang-btn" id="btn-es" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+    <a href="index.html#contacto" class="nav-cta">
+      <span data-lang="es">Consulta Gratis</span>
+      <span data-lang="en">Free Consult</span>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="blog-hero">
+  <div class="hero-inner">
+    <span class="hero-label">
+      <span data-lang="es">Recursos Legales</span>
+      <span data-lang="en">Legal Resources</span>
+    </span>
+    <h1 class="hero-title">
+      <span data-lang="es">Conoce tus derechos.<br><em>Toma mejores decisiones.</em></span>
+      <span data-lang="en">Know your rights.<br><em>Make better decisions.</em></span>
+    </h1>
+    <p class="hero-desc">
+      <span data-lang="es">Guías educativas escritas por el equipo de Crespo &amp; Crespo para que entiendas el sistema legal sin necesitar un diccionario.</span>
+      <span data-lang="en">Educational guides written by the Crespo &amp; Crespo team so you understand the legal system without needing a dictionary.</span>
+    </p>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filter-bar">
+  <button class="filter-btn active" data-filter="all" onclick="filterPosts('all', this)">
+    <span data-lang="es">Todos</span>
+    <span data-lang="en">All</span>
+  </button>
+  <button class="filter-btn" data-filter="quiebra" onclick="filterPosts('quiebra', this)">
+    <span data-lang="es">Quiebras</span>
+    <span data-lang="en">Bankruptcy</span>
+  </button>
+  <button class="filter-btn" data-filter="sucesoral" onclick="filterPosts('sucesoral', this)">
+    <span data-lang="es">Sucesoral</span>
+    <span data-lang="en">Estate</span>
+  </button>
+  <button class="filter-btn" data-filter="cobro" onclick="filterPosts('cobro', this)">
+    <span data-lang="es">Cobros</span>
+    <span data-lang="en">Collections</span>
+  </button>
+  <button class="filter-btn" data-filter="contributivo" onclick="filterPosts('contributivo', this)">
+    <span data-lang="es">Tributario</span>
+    <span data-lang="en">Tax</span>
+  </button>
+</div>
+
+<!-- BLOG GRID -->
+<section class="blog-section">
+  <div class="blog-grid" id="blog-grid">
+
+    <!-- ══ EXAMPLE POST 1 ══════════════════════════════ -->
+    <!-- Copy this block to add new posts.
+         Change: data-category, post-card-tag, title, excerpt, date, read time.
+         Delete the coming-soon block when you have real posts. -->
+    <!--
+    <a class="post-card reveal" href="post-ejemplo.html" data-category="quiebra">
+      <div class="post-card-img">
+        <div class="post-card-img-bg">
+          <span class="post-card-img-letter">Q</span>
+        </div>
+        <span class="post-card-tag" data-lang="es">Quiebras</span>
+        <span class="post-card-tag" data-lang="en">Bankruptcy</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-card-meta">
+          <span>Abr 2025</span>
+          <span class="post-card-meta-dot"></span>
+          <span data-lang="es">Alejandro Crespo</span>
+          <span data-lang="en">Alejandro Crespo</span>
+        </div>
+        <h2 class="post-card-title">
+          <span data-lang="es">¿Qué pasa con mi casa si me declaro en quiebra?</span>
+          <span data-lang="en">What happens to my home if I file for bankruptcy?</span>
+        </h2>
+        <p class="post-card-excerpt">
+          <span data-lang="es">Una de las preguntas más frecuentes. La respuesta depende del capítulo que radiques y del equity que tengas en tu propiedad.</span>
+          <span data-lang="en">One of the most common questions. The answer depends on which chapter you file and how much equity you have in your property.</span>
+        </p>
+      </div>
+      <div class="post-card-footer">
+        <span class="post-card-read">
+          <span data-lang="es">Leer artículo</span>
+          <span data-lang="en">Read article</span>
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+        </span>
+        <span class="post-card-time">
+          <span data-lang="es">5 min</span>
+          <span data-lang="en">5 min</span>
+        </span>
+      </div>
+    </a>
+    -->
+
+    <!-- EMPTY STATE — remove this block when you have real posts -->
+    <div class="coming-soon">
+      <div class="coming-soon-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+      </div>
+      <h3>
+        <span data-lang="es">Contenido próximamente</span>
+        <span data-lang="en">Content coming soon</span>
+      </h3>
+      <p>
+        <span data-lang="es">Estamos preparando guías educativas sobre quiebras, planificación sucesoral, cobros y más. Mientras tanto, contáctanos si tienes preguntas.</span>
+        <span data-lang="en">We're preparing educational guides on bankruptcy, estate planning, collections, and more. In the meantime, contact us if you have questions.</span>
+      </p>
+      <a href="index.html#contacto" class="coming-soon-cta">
+        <span data-lang="es">Habla con nosotros</span>
+        <span data-lang="en">Talk to us</span>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M6 2l4 4-4 4"/></svg>
+      </a>
+    </div>
+
+  </div><!-- /blog-grid -->
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-text">
+    <p class="newsletter-label">
+      <span data-lang="es">Mantente informado</span>
+      <span data-lang="en">Stay informed</span>
+    </p>
+    <h2 class="newsletter-title">
+      <span data-lang="es">Nuevos artículos<br>directo a tu <em>correo</em></span>
+      <span data-lang="en">New articles<br>straight to your <em>inbox</em></span>
+    </h2>
+  </div>
+  <form class="newsletter-form" onsubmit="submitNewsletter(event)">
+    <input
+      class="newsletter-input"
+      type="email"
+      id="newsletter-email"
+      required
+      placeholder="tu@email.com"
+    >
+    <button type="submit" class="newsletter-submit">
+      <span data-lang="es">Suscribirse</span>
+      <span data-lang="en">Subscribe</span>
+    </button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Crespo &amp; Crespo Law</div>
+  <p class="footer-copy">
+    &copy; 2025 Crespo &amp; Crespo.
+    <span data-lang="es">Todos los derechos reservados.</span>
+    <span data-lang="en">All rights reserved.</span>
+  </p>
+  <nav class="footer-links">
+    <a href="index.html#servicios" data-lang="es">Servicios</a>
+    <a href="index.html#servicios" data-lang="en">Services</a>
+    <a href="blog.html" data-lang="es">Blog</a>
+    <a href="blog.html" data-lang="en">Blog</a>
+    <a href="index.html#contacto" data-lang="es">Contacto</a>
+    <a href="index.html#contacto" data-lang="en">Contact</a>
+  </nav>
+</footer>
+
+<script>
+/* ── Language system ─────────────────────────────── */
+(function() {
+  var saved = localStorage.getItem('cc_lang') || 'es';
+  applyLang(saved, false);
+})();
+
+function setLang(lang) {
+  applyLang(lang, true);
+}
+
+function applyLang(lang, save) {
+  document.body.classList.toggle('lang-en', lang === 'en');
+  document.body.classList.toggle('lang-es', lang === 'es');
+  var btnEs = document.getElementById('btn-es');
+  var btnEn = document.getElementById('btn-en');
+  if (btnEs) btnEs.classList.toggle('active', lang === 'es');
+  if (btnEn) btnEn.classList.toggle('active', lang === 'en');
+  document.documentElement.lang = lang;
+  if (save) localStorage.setItem('cc_lang', lang);
+  var emailInput = document.getElementById('newsletter-email');
+  if (emailInput) emailInput.placeholder = lang === 'en' ? 'your@email.com' : 'tu@email.com';
+}
+
+/* ── Filter ──────────────────────────────────────── */
+function filterPosts(category, btn) {
+  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('.post-card').forEach(function(card) {
+    if (category === 'all' || card.dataset.category === category) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+/* ── Newsletter ──────────────────────────────────── */
+function submitNewsletter(e) {
+  e.preventDefault();
+  var btn = e.target.querySelector('.newsletter-submit');
+  var isEs = !document.body.classList.contains('lang-en');
+  btn.textContent = isEs ? '✓ Suscrito' : '✓ Subscribed';
+  btn.style.background = '#2a7a4e';
+  btn.style.color = '#fff';
+  btn.disabled = true;
+}
+
+/* ── Scroll reveal ───────────────────────────────── */
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+</script>
+</body>
+</html>
